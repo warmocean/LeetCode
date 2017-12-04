@@ -1,13 +1,12 @@
 class Solution(object):
-    def removeElement(self, nums, val):
+    def removeElement1(self, nums, val):
         """
         :type nums: List[int]
         :type val: int
         :rtype: int
         """
         
-        """
-        方法1：（煞笔做法）
+        # 方法1的煞笔做法，Runtime: 42 ms，Your runtime beats 25.51 % of python submissions.
         initial_len = len(nums)
         final_len = 0
         i = 0
@@ -25,21 +24,31 @@ class Solution(object):
                 final_len += 1
             i += 1
         return final_len
-        
-        
-        方法1：（正确做法）
+    
+     
+    def removeElement2(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        # 方法1的正确做法，Runtime: 39 ms，Your runtime beats 38.47 % of python submissions.
         final_len = 0
         for i, num in enumerate(nums):        
             if num != val:
                 nums[final_len] = num
                 final_len +=1
 
-        return final_len       
+        return final_len  
+    
         
+    def removeElement3(self, nums, val):
         """
-        
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
         """
-        方法2：
+        # 方法2的通常方法，Runtime: 38 ms，Your runtime beats 57.50 % of python submissions.
         initial_len = len(nums)
         idx_start = 0
         idx_end = initial_len - 1
@@ -57,9 +66,15 @@ class Solution(object):
                     final_len += 1
                 idx_end -= 1
         return final_len
+    
+    
+    def removeElement4(self, nums, val):
         """
-        
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
         """
+        # 方法2的取巧方法，Runtime: 35 ms，Your runtime beats 74.94 % of python submissions.
         start, end = 0, len(nums) - 1
         while start <= end:
             if nums[start] == val:
